@@ -79,11 +79,11 @@ const ButtonItem = props => {
         }
 
         if (openInNewTab) {
-            window.open(url, '_blank');
+            globalThis.open(url, '_blank');
         } else if (linkProps.to) {
             history.push(url);
         } else {
-            window.location.assign(url);
+            globalThis.location.assign(url);
         }
     }, [openInNewTab, url, linkProps.to]); // eslint-disable-line react-hooks/exhaustive-deps
 
