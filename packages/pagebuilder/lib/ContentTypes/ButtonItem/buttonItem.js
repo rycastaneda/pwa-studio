@@ -78,7 +78,7 @@ const ButtonItem = props => {
             return;
         }
 
-        if (openInNewTab) {
+        if (openInNewTab && globalThis.open) {
             globalThis.open(url, '_blank');
         } else if (linkProps.to) {
             history.push(url);
