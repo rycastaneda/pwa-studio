@@ -1,5 +1,6 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import { useHistory } from 'react-router-dom';
 import { createTestInstance } from '@magento/peregrine';
 import { useAppContext } from '@magento/peregrine/lib/context/app';
 
@@ -94,6 +95,13 @@ jest.mock('@apollo/client', () => ({
         })
     ])
 }));
+
+jest.mock('react-router-dom', () => ({
+    useHistory: jest.fn()
+}));
+
+const createHref = jest.fn(path => `${new URL(path, globalThis.location)}`);
+useHistory.mockReturnValue({ createHref });
 
 let perfNowSpy;
 
