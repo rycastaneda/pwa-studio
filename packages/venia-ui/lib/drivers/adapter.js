@@ -58,7 +58,7 @@ const VeniaAdapter = props => {
         const persistor = new CachePersistor({
             key: `apollo-cache-persist-${storeCode}`,
             cache,
-            storage: window.localStorage,
+            storage: globalThis.localStorage,
             debug: process.env.NODE_ENV === 'development'
         });
 
