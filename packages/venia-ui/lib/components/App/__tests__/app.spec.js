@@ -130,13 +130,13 @@ const mockWindowLocation = {
 
 let oldWindowLocation;
 beforeEach(() => {
-    oldWindowLocation = window.location;
-    delete window.location;
-    window.location = mockWindowLocation;
+    oldWindowLocation = globalThis.location;
+    delete globalThis.location;
+    globalThis.location = mockWindowLocation;
     mockWindowLocation.reload.mockClear();
 });
 afterEach(() => {
-    window.location = oldWindowLocation;
+    globalThis.location = oldWindowLocation;
 });
 
 test('renders a full page with onlineIndicator and routes', () => {
